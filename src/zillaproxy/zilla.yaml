@@ -78,8 +78,7 @@ bindings:
 
 telemetry:
   attributes:
-    service.namespace: my_ns_${{ env.OTEL_SERVICE_NAME }}__
-    service.name: my_svc_${{ env.OTEL_SERVICE_NAME }}__
+    service.name: ${{ env.OTEL_SERVICE_NAME }}
     service.version: ${{ env.ZILLA_VERSION }}
     service.kind: proxy
     another.attribute: testing
