@@ -613,9 +613,9 @@ services:
       retries: 10
     logging: *logging
 
-  # Zilla used by Accounting and Fraud Detection services
+  # Zilla
   zillaproxy:
-    image: ghcr.io/aklivity/zilla:0.9.79
+    image: ghcr.io/aklivity/zilla:0.9.82
     container_name: zilla-proxy
     deploy:
       resources:

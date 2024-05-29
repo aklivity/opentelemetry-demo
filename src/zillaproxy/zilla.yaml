@@ -80,27 +80,26 @@ telemetry:
   attributes:
     service.name: ${{ env.OTEL_SERVICE_NAME }}
     service.version: ${{ env.ZILLA_VERSION }}
-    service.kind: proxy
-    another.attribute: testing
 
   # Desired metrics to track
   metrics:
+    - http.active.requests
+    - http.duration
     - http.request.size
     - http.response.size
+    - stream.active.received
+    - stream.active.sent
+    - stream.opens.received
     - stream.opens.sent
+    - stream.data.received
+    - stream.data.sent
+    - stream.errors.received
+    - stream.errors.sent
+    - stream.closes.received
     - stream.closes.sent
 
   # Prometheus endpoint definition
   exporters:
-    # prometheus_metric_exporter:
-    #   type: prometheus
-    #   options:
-    #     endpoints:
-    #       - scheme: http
-    #         path: /metrics
-    #         port: 7190
-    # standard_out:
-    #   type: stdout
     otel_exporter_otlp:
       type: otlp
       options:
