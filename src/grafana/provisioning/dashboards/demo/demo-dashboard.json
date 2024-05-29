@@ -1047,19 +1047,18 @@
           "type": "prometheus",
           "uid": "webstore-metrics"
         },
-        "definition": "target_info",
+        "definition": "duration_milliseconds_bucket",
         "hide": 0,
         "includeAll": false,
         "multi": false,
         "name": "service",
         "options": [],
         "query": {
-          "qryType": 4,
-          "query": "target_info",
+          "query": "{__name__=~\"(duration_milliseconds_bucket|http_duration_nanoseconds_bucket)\"}",
           "refId": "PrometheusVariableQueryEditor-VariableQuery"
         },
         "refresh": 1,
-        "regex": "/.*job=\\\"([^\\\"]+)\\\".*/",
+        "regex": "/.*service_name=\\\"([^\\\"]+)\\\".*/",
         "skipUrlSync": false,
         "sort": 1,
         "type": "query"
