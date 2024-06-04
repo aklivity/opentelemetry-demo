@@ -629,7 +629,6 @@ services:
     restart: unless-stopped
     ports:
       - "${ZILLA_PORT}:${ZILLA_PORT}"
-      - "7190:7190"
     environment:
       - KAFKA_SERVICE_ADDR
       - OTEL_EXPORTER_OTLP_ENDPOINT=http://${OTEL_COLLECTOR_HOST}:${OTEL_COLLECTOR_PORT_HTTP}
