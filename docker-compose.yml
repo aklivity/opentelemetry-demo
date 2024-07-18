@@ -658,6 +658,7 @@ services:
       - OTEL_SERVICE_NAME=zillaproxy
     volumes:
       - ./src/zillaproxy/zilla.yaml:/etc/zilla/zilla.yaml
+      - ./pb/:/etc/zilla/pb/
     command: start -v -e
     healthcheck:
       test: nc -z zilla ${ZILLA_PORT}

@@ -1,5 +1,12 @@
 ---
 name: ${{ env.OTEL_SERVICE_NAME }}
+catalogs:
+  host_filesystem:
+    type: filesystem
+    options:
+      subjects:
+        otel-demo:
+          path: pb/demo.proto
 bindings:
   north_tcp_server:
     type: tcp
@@ -47,6 +54,16 @@ bindings:
   north_kafka_cache_client:
     type: kafka
     kind: cache_client
+    options:
+      topics:
+        - name: orders
+          value:
+            model: protobuf
+            view: json
+            catalog:
+              otel-demo:
+                - subject: otel-demo
+                  record: ShipOrderRequest
     exit: south_kafka_cache_server
     telemetry:
       metrics:
@@ -57,6 +74,15 @@ bindings:
     options:
       bootstrap:
         - orders
+      topics:
+        - name: orders
+          value:
+            model: protobuf
+            view: json
+            catalog:
+              otel-demo:
+                - subject: otel-demo
+                  record: ShipOrderRequest
     exit: south_kafka_client
     telemetry:
       metrics:
